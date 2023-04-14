@@ -27,15 +27,6 @@ public class PosterTest {
     }
 
     @Test
-    public void shouldFilms() {
-
-        Movie[] expected = {title7, title6, title5, title4, title3};
-        Movie[] actual = poster.findLast();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
     public void shouldLimitFilms() {
         MoviePosterManager poster = new MoviePosterManager(7);
 
@@ -64,6 +55,16 @@ public class PosterTest {
     }
 
     @Test
+    public void shouldFilms() {
+        MoviePosterManager poster = new MoviePosterManager(5);
+
+        Movie[] expected = {title7, title6, title5, title4, title3};
+        Movie[] actual = poster.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldMinLimitMovies() {
         MoviePosterManager poster = new MoviePosterManager(5);
 
@@ -73,6 +74,24 @@ public class PosterTest {
         poster.addMovie(title7);
 
         Movie[] expected = {title7, title6, title5, title4};
+        Movie[] actual = poster.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldAboveLimitMovies() {
+        MoviePosterManager poster = new MoviePosterManager(5);
+
+        poster.addMovie(title1);
+        poster.addMovie(title2);
+        poster.addMovie(title3);
+        poster.addMovie(title4);
+        poster.addMovie(title5);
+        poster.addMovie(title6);
+        poster.addMovie(title7);
+
+        Movie[] expected = {title7, title6, title5, title4, title3};
         Movie[] actual = poster.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
