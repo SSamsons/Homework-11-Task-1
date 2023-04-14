@@ -58,6 +58,12 @@ public class PosterTest {
     public void shouldFilms() {
         MoviePosterManager poster = new MoviePosterManager(5);
 
+        poster.addMovie(title3);
+        poster.addMovie(title4);
+        poster.addMovie(title5);
+        poster.addMovie(title6);
+        poster.addMovie(title7);
+
         Movie[] expected = {title7, title6, title5, title4, title3};
         Movie[] actual = poster.findLast();
 
